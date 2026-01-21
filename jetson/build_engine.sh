@@ -1,21 +1,15 @@
 #!/bin/bash
-# build_engine.sh
-
-
-
-# Paths
-ONNX_MODEL="../models/driver_action.onnx"
-ENGINE_FILE="../models/driveraction_fp16.engine"
-
 echo "Building TensorRT engine from ONNX..."
-echo "ONNX: $ONNX_MODEL"
-echo "ENGINE: $ENGINE_FILE"
 
-# Run TensorRT trtexec
+# Path to ONNX model
+ONNX_PATH="../models/driver_action.onnx"   # make sure underscore matches
+
+# Output engine path
+ENGINE_PATH="../models/driveraction_fp16.engine"
+
+# Build engine
 /usr/src/tensorrt/bin/trtexec \
-    --onnx=$ONNX_MODEL \
-    --saveEngine=$ENGINE_FILE \
-    --fp16 \
-    --verbose
-
-echo "Engine build complete!"
+  --onnx=$ONNX_PATH \
+  --saveEngine=$ENGINE_PATH \
+  --fp16 \
+  --verbose
