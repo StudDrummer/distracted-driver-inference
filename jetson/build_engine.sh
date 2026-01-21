@@ -1,27 +1,21 @@
 #!/bin/bash
-set -e
+# build_engine.sh
 
-ONNX_MODEL=../models/driver_action.onnx
-ENGINE_OUT=../models/driver_action_fp16.engine
+
+
+# Paths
+ONNX_MODEL="../models/driver_action.onnx"
+ENGINE_FILE="../models/driveraction_fp16.engine"
 
 echo "Building TensorRT engine from ONNX..."
 echo "ONNX: $ONNX_MODEL"
-echo "ENGINE: $ENGINE_OUT"
+echo "ENGINE: $ENGINE_FILE"
 
-if [ ! -f "$ONNX_MODEL" ]; then
-  echo "ERROR: ONNX model not found!"
-  exit 1
-fi
-
+# Run TensorRT trtexec
 /usr/src/tensorrt/bin/trtexec \
-  --onnx=$ONNX_MODEL \
-  --saveEngine=$ENGINE_OUT \
-  --fp16 \
-  --workspace=4096 \
-  --explicitBatch \
-  --verbose
+    --onnx=$ONNX_MODEL \
+    --saveEngine=$ENGINE_FILE \
+    --fp16 \
+    --verbose
 
-echo "TensorRT engine built successfully."
-
-
-chmod +x build_engine.sh
+echo "Engine build complete!"
