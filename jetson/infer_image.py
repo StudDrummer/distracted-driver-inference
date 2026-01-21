@@ -30,7 +30,7 @@ for binding in engine:
     bindings.append(host_mem.ctypes.data)
 
 # Load and preprocess an image
-img = cv2.imread("test.jpg")  # Replace with your test image path
+img = cv2.imread("test.jpg")  
 img = cv2.resize(img, (224, 224))  # Resize as per your training
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 img = img.astype(np.float32) / 255.0
