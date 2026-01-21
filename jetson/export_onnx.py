@@ -46,7 +46,7 @@ torch.onnx.export(
     },
     do_constant_folding=True,
     keep_initializers_as_inputs=True,
-    use_external_data_format=False  # embed all weights in the ONNX
+
 )
 
 print("ONNX exported successfully to ../models/driver_action.onnx")
