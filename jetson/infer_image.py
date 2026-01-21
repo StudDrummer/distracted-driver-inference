@@ -12,8 +12,9 @@ def load_engine(path):
         return runtime.deserialize_cuda_engine(f.read())
 
 # Paths
-ENGINE_PATH = "models/driveraction_fp16.engine"
-CLASS_JSON = "driverclass.json"
+ENGINE_PATH = "/home/rushil-mohan/distracted-driver-inference/models/driveraction_fp16.engine"
+CLASS_JSON = "/home/rushil-mohan/distracted-driver-inference/models/driver_class_map.json"
+
 TEST_IMAGE = "test.jpg"
 
 # Load engine
@@ -35,7 +36,6 @@ img = np.expand_dims(img, axis=0)
 inputs = np.ascontiguousarray(img)
 outputs = np.zeros((1, len(classes)), dtype=np.float32)
 bindings = [inputs.ctypes.data, outputs.ctypes.data]
-
 # Run inference
 context.execute_v2(bindings)
 pred = np.argmax(outputs)

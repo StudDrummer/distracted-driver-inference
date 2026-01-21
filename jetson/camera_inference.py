@@ -3,8 +3,8 @@ import numpy as np
 import cv2
 import json
 
-ENGINE_PATH = "models/driveraction_fp16.engine"
-CLASS_JSON = "driverclass.json"
+ENGINE_PATH = "/home/rushil-mohan/distracted-driver-inference/models/driveraction_fp16.engine"
+CLASS_JSON = "/home/rushil-mohan/distracted-driver-inference/models/driver_class_map.json"
 
 # Face detector (OpenCV DNN, very lightweight)
 FACE_PROTO = "deploy.prototxt"   # download from opencv github
